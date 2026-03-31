@@ -10,7 +10,7 @@ app = FastAPI(title="Creator Audience Pulse API")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:5173",
-        "https://creator-pulse.vercel.app"],
+        "https://creator-pulse-4ye5.vercel.app"],
     allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
