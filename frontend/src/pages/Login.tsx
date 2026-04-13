@@ -29,7 +29,11 @@ export default function Login() {
       localStorage.setItem("token", res.data.access_token);
       navigate("/dashboard");
     } catch (err: any) {
-      setError(err.response?.data?.detail || "Something went wrong");
+      if (err.code === "ECONNABORTED" || err.message?.includes("timeout")) {
+        setError("Server is waking up (free tier cold start). Please wait 30 seconds and try again.");
+      } else {
+        setError(err.response?.data?.detail || "Something went wrong. Please try again.");
+      }
     }
     setLoading(false);
   };
